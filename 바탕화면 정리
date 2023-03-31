@@ -1,0 +1,33 @@
+function solution(wallpaper) {
+  const arr = wallpaper.map((v, i) => [i, v.indexOf('#')])
+
+  console.log(arr);
+
+  let xMax = arr[0][1];
+  let xMaxIndex = 0;
+  let yMax = arr[0][0];
+  let yMaxIndex = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i][1] > xMax) {
+      xMax = arr[i][1];
+      xMaxIndex = i;
+    }
+
+    if (arr[i][0] > yMax) {
+      yMax = arr[i][0];
+      yMaxIndex = i;
+    }
+
+  }
+  console.log(xMax, xMaxIndex)
+  console.log(yMax, yMaxIndex)
+
+  arr.splice(2, 1, [yMax + 1, xMax + 1])
+  console.log([...arr[0], ...arr[arr.length - 1]]);
+  return [...arr[0], ...arr[arr.length - 1]];
+
+}
+
+solution([".#...", "..#..", "...#."])
+
